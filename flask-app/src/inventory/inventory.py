@@ -23,9 +23,9 @@ def get_inventory():
 
 # Get specific store location inventory information
 @inventory.route('/inventory/<storeID>', methods=['GET'])
-def get_customer(storeID):
+def get_store_location(storeID):
     cursor = db.get_db().cursor()
-    cursor.execute('select * from inventory where id = {0}'.format(storeID))
+    cursor.execute('select * from Inventory where storeID = {0}'.format(storeID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
