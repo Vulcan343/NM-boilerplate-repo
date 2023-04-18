@@ -2,89 +2,84 @@ create database non_dairy_barn;
 
 use non_dairy_barn;
 
-create table Employees
-(
-    employeeID  CHAR(10) primary key,
-    SSN         char(11) unique NOT NULL,
-    first_name  varchar(40),
-    last_name   varchar(40),
-    hourly_wage DECIMAL(4, 2),
-    home_store  char(10)
+-- -----------------------------------------------------------------------------------------
+-- Table 'non_dairy_barn'.'Employees'
+-- -----------------------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS Employees(
+   ssn         VARCHAR(11) UNIQUE NOT NULL, 
+   first_name  VARCHAR(10) NOT NULL,
+   last_name   VARCHAR(13) NOT NULL,
+   hourly_wage VARCHAR(6) NOT NULL,
+   home_store  INTEGER  NOT NULL,
+   employeeID  VARCHAR(10) NOT NULL PRIMARY KEY
 );
 
-insert into Employees (employeeID, SSN, first_name, last_name, hourly_wage, home_store)
-VALUES (000001, 99 - 999 - 9999, 'Tyrin', 'Rannington', 15.00, 000001),
-       (000002, 88 - 888 - 8888, 'Velma', 'Leming', 20.00, 000002),
-       (000003, 77 - 777 - 7777, 'Weyrin', 'Smith', 25.00, 000003);
+-- -----------------------------------------------------------------------------------------
+-- Table 'non_dairy_barn'.'Store_Locations'
+-- -----------------------------------------------------------------------------------------
 
-create table Store_Locations
-(
-    storeID        char(10) primary key,
-    street_address varchar(100),
-    city           varchar(40),
-    state          varchar(40),
-    zipcode        char(10),
-    phone_number   char(15) unique,
-    manager_name   varchar(100),
-    managerID      char(10),
-    CONSTRAINT fk_1
+CREATE TABLE Store_Locations(
+   storeID       INTEGER  NOT NULL PRIMARY KEY, 
+   street_address VARCHAR(24) NOT NULL,
+   city           VARCHAR(11) NOT NULL,
+   state          VARCHAR(13) NOT NULL,
+   zipcode        INTEGER  NOT NULL,
+   phone_number   VARCHAR(12) NOT NULL,
+   manager_l_name VARCHAR(10) NOT NULL,
+   manager_f_name VARCHAR(8) NOT NULL,
+   managerID      VARCHAR(10) NOT NULL
+   CONSTRAINT fk_1
         FOREIGN KEY (managerID) references Employees (employeeID)
 );
 
-insert into Store_Locations (storeID, street_address, city, state, zipcode, phone_number, manager_name, managerID)
-values (000001, '800 Hemingway Rd', 'Milkton', 'Vermont', '02929', 555 - 555 - 5555, 'Tyrin Rannington', 000001),
-       (000002, '50 Old Mill Way', 'Westin', 'Vermont', '23123', 717 - 282 - 2931, 'Velma Leming', 000002),
-       (000003, '182 Tommorrow Way', 'Burlington', 'Vermont', '12312', 226 - 235 - 5473, 'Weyrin Smith', 000003);
+-- -----------------------------------------------------------------------------------------
+-- Table 'non_dairy_barn'.'Company_Payroll'
+-- -----------------------------------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS Company_Payroll(
-   primary_storeID  INTEGER  NOT NULL PRIMARY KEY AUTO_INCREMENT
-  ,total_wages      VARCHAR(8) NOT NULL
-  ,month_start_date DATE  NOT NULL
-  ,employeeID       VARCHAR(10) NOT NULL
+   primary_storeID  INTEGER  NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   total_wages      VARCHAR(8) NOT NULL,
+   month_start_date DATE  NOT NULL,
+   employeeID       VARCHAR(10) NOT NULL
 );
 
+-- -----------------------------------------------------------------------------------------
+-- Table 'non_dairy_barn'.'Products'
+-- -----------------------------------------------------------------------------------------
 
-create table Products
-(
-    productID char(10) primary key,
-    name      varchar(100),
-    price     DECIMAL(6, 2),
-    milk_type char(10)
+CREATE TABLE Products(
+   productID INTEGER  NOT NULL PRIMARY KEY, 
+   name      VARCHAR(30) NOT NULL,
+   price     NUMERIC(4,2) NOT NULL,
+   milk_type VARCHAR(9) NOT NULL
 );
 
-insert into Products (productID, name, price, milk_type)
-values (00001, 'Sams Sensational Soy Milk', 8.50, 'Soy'),
-       (00002, 'Als Awesome Almond Milk', 10.00, 'Almond'),
-       (00003, 'Oaks Outstanding Oat Milk', 4.50, 'Oat');
+-- -----------------------------------------------------------------------------------------
+-- Table 'non_dairy_barn'.'Discounts'
+-- -----------------------------------------------------------------------------------------
 
-create table Discounts
-(
-    discount_code char(10) primary key,
-    start_date    DATE,
-    end_date      DATE,
-    percent_off   decimal(6, 2)
+CREATE TABLE Discounts(
+   start_date    VARCHAR(19) NOT NULL,
+   end_date      VARCHAR(19) NOT NULL,
+   percent_off   INTEGER  NOT NULL,
+   discount_code VARCHAR(8) NOT NULL PRIMARY KEY
 );
 
-insert into Discounts (discount_code, start_date, end_date, percent_off)
-values (00001, '2023-04-23', '2023-05-23', 10),
-       (00002, '2023-01-23', '2023-03-23', 25),
-       (00003, '2023-09-23', '2023-10-23', 50);
+-- -----------------------------------------------------------------------------------------
+-- Table 'non_dairy_barn'.'Disc_Prod'
+-- -----------------------------------------------------------------------------------------
 
 create table Disc_Prod
 (
-    discount_code char(10),
-    productID     char(10),
+    discount_code VARCHAR(8) NOT NULL,
+    productID     INTEGER  NOT NULL,
     PRIMARY KEY (discount_code, productID),
     constraint fk_3
         foreign key (discount_code) references Discounts (discount_code),
     constraint fk_4
         foreign key (productID) references Products (productID)
 );
-
-insert into Disc_Prod (discount_code, productID)
-VALUES (00001, 00001),
-       (00002, 00002),
-       (00003, 00003);
 
 create table Customers
 (
