@@ -2,6 +2,9 @@ create database non_dairy_barn;
 
 use non_dairy_barn;
 
+grant all privileges on non_dairy_barn.* to 'webapp'@'%';
+flush privileges;
+
 -- -----------------------------------------------------------------------------------------
 -- Table 'non_dairy_barn'.'Employees'
 -- -----------------------------------------------------------------------------------------
