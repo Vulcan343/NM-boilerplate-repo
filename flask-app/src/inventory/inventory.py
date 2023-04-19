@@ -8,6 +8,7 @@ inventory = Blueprint('inventory', __name__)
 # route to get the entire stock of the company
 @inventory.route('/inventory', methods=['GET'])
 def get_inventory():
+
     cursor = db.get_db().cursor()
     cursor.execute('select * from Inventory')
     row_headers = [x[0] for x in cursor.description]

@@ -61,7 +61,7 @@ def get_prod_info(productID):
     # get a cursor object from the database
     cursor = db.get_db().cursor()
 
-    # use cursor to query the database for a list of products
+    # use cursor to query the database for a list of products where ID = requested ID
     cursor.execute('SELECT * '
                    'FROM products'
                    'ID = {0}'.format(productID))
@@ -90,15 +90,21 @@ def get_prod_info(productID):
 # get the top 5 products from the database
 @products.route('/mostExpensive')
 def get_most_pop_products():
+
+    # get a cursor object from the database
     cursor = db.get_db().cursor()
+
+    # use cursor to query the database for a list of top 5 most expensive products
     query = '''
         SELECT product_code, product_name, list_price, reorder_level
         FROM products
         ORDER BY list_price DESC
         LIMIT 5
     '''
+
     cursor.execute(query)
-       # grab the column headers from the returned data
+
+    # grab the column headers from the returned data
     column_headers = [x[0] for x in cursor.description]
 
     # create an empty dictionary object to use in 
