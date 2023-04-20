@@ -129,7 +129,7 @@ def remove_employee():
     req_data = request.get_json()
     current_app.logger.info(req_data)
 
-    empID = req_data['employeeID']
+    empID = req_data['empID_Delete']
 
     # use cursor to delete specific employee with requested ID
     query = f'DELETE FROM Employees WHERE employeeID = "{empID}"'
