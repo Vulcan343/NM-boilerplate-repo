@@ -1,4 +1,4 @@
-
+We created a database for The Non-Dairy Barn, a franchise that specializes in selling non-dairy milk alternatives. The NDB is a brick and mortar storefront that sells milk alternatives, but currently lacks the infrastructure needed for e-commerce and internal employee and inventory management. Our database holds information about suppliers, employees, products, individualized store inventory, payroll, and customer information. In terms of our API implementation, we constructed easy-to-navigate user interfaces to view milk-alternative products available for purchase and where they can buy them. Customers can enjoy this search feature, while store employees can use the app to add, delete, and update products in the database as well as worker and customer information.
 
 # MySQL + Flask Boilerplate Project
 
