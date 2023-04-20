@@ -43,12 +43,8 @@ def get_employee(employeeID):
     # get a cursor object from the database
     cursor = db.get_db().cursor()
 
-    # use cursor to query the database for all information about one employee
-    cursor.execute('select * '
-                   'from Employees '
-                   'where employeeID = {0}'.format(employeeID))
+    cursor.execute(f'select * from Employees where employeeID = "{employeeID}"')
 
-    # grab the column headers from the returned data
     row_headers = [x[0] for x in cursor.description]
 
     # create an empty dictionary object to use in
@@ -69,16 +65,20 @@ def get_employee(employeeID):
     return the_response
 
 # Get all employees who work at specific locations 
-@employee.route('/employee/<storeID>', methods=['GET'])
+@employee.route('/employee/stores/<storeID>', methods=['GET'])
 def get_employees_at_store_loc(storeID):
 
     # get a cursor object from the database
     cursor = db.get_db().cursor()
+<<<<<<< HEAD
 
     # use cursor to query the database for all employee information from one store
     cursor.execute('select * from Employees where storeID = {0}'.format(storeID))
 
     # grab the column headers from the returned data
+=======
+    cursor.execute(f'select * from Employees where home_store = {storeID}')
+>>>>>>> 32e0a8b1985b3738c0d5b050c7331ca8a7e99af2
     row_headers = [x[0] for x in cursor.description]
 
     # create an empty dictionary object to use in

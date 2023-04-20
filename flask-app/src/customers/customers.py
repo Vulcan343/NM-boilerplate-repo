@@ -10,10 +10,10 @@ customers = Blueprint('customers', __name__)
 def get_customers():
     # get a cursor object from the database
     cursor = db.get_db().cursor()
-
     # use cursor to query the database for a list of products where ID = requested ID
     cursor.execute('select customerID, last_name,\
         first_name, email, primary_storeID from Customers')
+
 
     # grab the column headers from the returned data
     row_headers = [x[0] for x in cursor.description]
@@ -42,7 +42,7 @@ def get_customer(customerID):
     # get a cursor object from the database
     cursor = db.get_db().cursor()
 
-    cursor.execute('select * from Customers where customerID = {0}'.format(customerID))
+    cursor.execute('select * from Customers where customer_id = {0}'.format(customerID))
 
     row_headers = [x[0] for x in cursor.description]
     json_data = []

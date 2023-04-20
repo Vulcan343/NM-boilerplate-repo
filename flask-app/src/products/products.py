@@ -12,7 +12,8 @@ def get_products():
     cursor = db.get_db().cursor()
 
     # use cursor to query the database for a list of products
-    cursor.execute('SELECT product_name, price, milk_type, product_id FROM products')
+
+    cursor.execute('SELECT name, price, milk_type, productID FROM Products')
 
     # grab the column headers from the returned data
     column_headers = [x[0] for x in cursor.description]
@@ -62,9 +63,7 @@ def get_prod_info(productID):
     cursor = db.get_db().cursor()
 
     # use cursor to query the database for a list of products where ID = requested ID
-    cursor.execute('SELECT * '
-                   'FROM products'
-                   'ID = {0}'.format(productID))
+    cursor.execute(f'SELECT * FROM Products where productID = {productID}')
 
     # grab the column headers from the returned data
     column_headers = [x[0] for x in cursor.description]

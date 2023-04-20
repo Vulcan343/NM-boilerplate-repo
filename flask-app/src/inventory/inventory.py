@@ -38,7 +38,7 @@ def get_inventory():
 
 
 # Get specific store location inventory information
-@inventory.route('/inventory/<storeID>', methods=['GET'])
+@inventory.route('/inventory/store/<storeID>', methods=['GET'])
 def get_store_location(storeID):
 
     # get a cursor object from the database
