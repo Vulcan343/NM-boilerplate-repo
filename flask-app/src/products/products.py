@@ -46,7 +46,7 @@ def post_products():
     prod_type = req_data['milk_type']
     prod_ID = req_data['productID']
 
-    insert_stmt = f'INSERT INTO products (name, price, milk_type, productID) ' \
+    insert_stmt = f'INSERT INTO Products (name, price, milk_type, productID) ' \
                   f'VALUES ({prod_name}, {prod_price}, {prod_type}, {prod_ID})'
 
     current_app.logger.info(insert_stmt)
