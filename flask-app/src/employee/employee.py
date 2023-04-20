@@ -133,6 +133,7 @@ def remove_employee(empID):
             WHERE employeeID = {empID}
         '''
     cursor.execute(query)
+    db.get_db().commit()
 
     return 'Yassss'
 

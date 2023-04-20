@@ -63,7 +63,7 @@ def remove_customer(custID):
     query = f'DELETE FROM Customers WHERE customer_id = {custID}'
     current_app.logger.info(query)
     cursor.execute(query)
-    
+    db.get_db().commit()
     # grab the column headers from the returned data    
 
     return 'Yasss'
