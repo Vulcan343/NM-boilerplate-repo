@@ -17,7 +17,8 @@ CREATE TABLE IF NOT EXISTS Employees(
    last_name   VARCHAR(13) NOT NULL,
    hourly_wage VARCHAR(6) NOT NULL,
    home_store  INTEGER  NOT NULL,
-   employeeID  VARCHAR(10) NOT NULL PRIMARY KEY
+   employeeID  VARCHAR(10) NOT NULL PRIMARY KEY,
+   ON DELETE cascade
 );
 
 -- -----------------------------------------------------------------------------------------
@@ -36,7 +37,8 @@ CREATE TABLE IF NOT EXISTS Store_Locations(
    manager_f_name VARCHAR(8) NOT NULL,
    managerID      VARCHAR(10) NOT NULL,
    CONSTRAINT fk_1
-        FOREIGN KEY (managerID) references Employees (employeeID)
+        FOREIGN KEY (managerID) references Employees (employeeID),
+        ON DELETE cascade
 );
 
 -- -----------------------------------------------------------------------------------------
@@ -48,7 +50,8 @@ CREATE TABLE IF NOT EXISTS Company_Payroll(
    primary_storeID  INTEGER  NOT NULL,
    total_wages      VARCHAR(8) NOT NULL,
    month_start_date VARCHAR(10)  NOT NULL,
-   employeeID       VARCHAR(10) NOT NULL
+   employeeID       VARCHAR(10) NOT NULL,
+   ON DELETE cascade
 );
 
 -- -----------------------------------------------------------------------------------------
@@ -60,7 +63,8 @@ CREATE TABLE if not exists Products(
    productID INTEGER  NOT NULL PRIMARY KEY,
    name      VARCHAR(30) NOT NULL,
    price     NUMERIC(4,2) NOT NULL,
-   milk_type VARCHAR(9) NOT NULL
+   milk_type VARCHAR(9) NOT NULL,
+   ON DELETE cascade
 );
 
 -- -----------------------------------------------------------------------------------------
@@ -72,7 +76,8 @@ CREATE TABLE if not exists Discounts(
    start_date    VARCHAR(19) NOT NULL,
    end_date      VARCHAR(19) NOT NULL,
    percent_off   INTEGER  NOT NULL,
-   discount_code VARCHAR(8) NOT NULL PRIMARY KEY
+   discount_code VARCHAR(8) NOT NULL PRIMARY KEY,
+   ON DELETE cascade
 );
 
 -- -----------------------------------------------------------------------------------------
@@ -88,7 +93,8 @@ create table if not exists Disc_Prod
     constraint fk_3
         foreign key (discount_code) references Discounts (discount_code),
     constraint fk_4
-        foreign key (productID) references Products (productID)
+        foreign key (productID) references Products (productID),
+        ON DELETE cascade
 );
 
 -- -----------------------------------------------------------------------------------------
@@ -107,7 +113,7 @@ CREATE TABLE if not exists Customers(
    street_address   VARCHAR(27) NOT NULL,
    city             VARCHAR(13) NOT NULL,
    state            VARCHAR(13) NOT NULL,
-   zipcode          INTEGER  NOT NULL
+   zipcode          INTEGER  NOT NULL,
    ON DELETE cascade
 );
 
@@ -124,7 +130,7 @@ create table if not exists StoreLoc_Cust
     CONSTRAINT fk_5
         FOREIGN KEY (customerID) references Customers (customer_id),
     CONSTRAINT fk_6
-        foreign key (storeID) references Store_Locations (storeID)
+        foreign key (storeID) references Store_Locations (storeID),
         ON DELETE cascade
 );
 
@@ -141,7 +147,7 @@ create table if not exists Location_Payroll
     storeID         INTEGER  NOT NULL,
     PRIMARY KEY (employeeID, storeID, week_start_date),
     constraint fk_7
-        foreign key (employeeID) references Employees (employeeID)
+        foreign key (employeeID) references Employees (employeeID),
         ON DELETE cascade
 );
 
@@ -157,7 +163,7 @@ create table if not exists Emp_LocPay
     constraint fk_8
         foreign key (employeeID) references Location_Payroll (employeeID),
     constraint fk_9
-        foreign key (storeID) references Store_Locations (storeID)
+        foreign key (storeID) references Store_Locations (storeID),
         ON DELETE cascade
 );
 
@@ -175,7 +181,7 @@ create table if not exists Inventory
     productID      INTEGER NOT NULL,
     primary key (storeID, productID, units_in_stock, units_on_order),
     constraint fk_10
-        foreign key (storeID) references Store_Locations (storeID)
+        foreign key (storeID) references Store_Locations (storeID),
         ON DELETE cascade
 
 );
@@ -193,7 +199,7 @@ create table if not exists Invent_Prod
     constraint fk_11
         foreign key (productID) references Products (productID),
     constraint fk_12
-        foreign key (storeID) references Inventory (storeID)
+        foreign key (storeID) references Inventory (storeID),
         ON DELETE cascade
 );
 
@@ -207,7 +213,7 @@ create table if not exists Ingredients
     productID       INTEGER  NOT NULL,
     ingredient_name VARCHAR(33) NOT NULL,
     constraint fk_13
-        foreign key (productID) references Products (productID)
+        foreign key (productID) references Products (productID),
         ON DELETE cascade
 );
 
@@ -227,7 +233,7 @@ create table if not exists Customer_Orders
     constraint fk_14
         foreign key (customerID) references Customers (customer_id),
     constraint fk_15
-        foreign key (productID) references Products (productID)
+        foreign key (productID) references Products (productID),
         ON DELETE cascade
 );
 
@@ -244,7 +250,7 @@ create table if not exists Prod_Cust
     constraint fk_16
         foreign key (productID) references Customer_Orders (productID),
     constraint fk_17
-        foreign key (productID) references Products (productID)
+        foreign key (productID) references Products (productID),
         ON DELETE cascade
 );
 
@@ -263,7 +269,7 @@ CREATE TABLE if not exists Suppliers(
    contact_l_name VARCHAR(11) NOT NULL,
    contact_f_name VARCHAR(9) NOT NULL,
    phone_num      VARCHAR(12) NOT NULL,
-   email          VARCHAR(28) NOT NULL
+   email          VARCHAR(28) NOT NULL,
    ON DELETE cascade
 );
 
@@ -282,7 +288,7 @@ create table if not exists Stocking_Expenses
     constraint fk_18
         foreign key (storeID) references Store_Locations (storeID),
     constraint fk_19
-        foreign key (productID) references Products (productID)
+        foreign key (productID) references Products (productID),
         ON DELETE cascade
 );
 
@@ -301,8 +307,8 @@ create table if not exists Supplier_Orders
     productID     INTEGER  NOT NULL,
     primary key (supplierID, productID),
     constraint fk_20
-        foreign key (supplierID) references Suppliers (supplierID)
-        ON DELETE cascade
+        foreign key (supplierID) references Suppliers (supplierID),
+    ON DELETE cascade
 );
 
 -- -----------------------------------------------------------------------------------------
@@ -318,6 +324,6 @@ create table Prod_Sup
     constraint fk_21
         foreign key (productID) references Products (productID),
     constraint fk_22
-        foreign key (supplierID) references Supplier_Orders (supplierID)
-        ON DELETE cascade
+        foreign key (supplierID) references Supplier_Orders (supplierID),
+    ON DELETE cascade
 );
