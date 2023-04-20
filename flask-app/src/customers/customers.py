@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
 
@@ -61,20 +61,9 @@ def remove_customer(custID):
     cursor = db.get_db().cursor()
 
     query = f'DELETE FROM Customers WHERE customer_id = {custID}'
+    current_app.logger.info(query)
     cursor.execute(query)
-    # grab the column headers from the returned data
-    column_headers = [x[0] for x in cursor.description]
+    
+    # grab the column headers from the returned data    
 
-    # create an empty dictionary object to use in
-    # putting column headers together with data
-    json_data = []
-
-    # fetch all the data from the cursor
-    theData = cursor.fetchall()
-
-    # for each of the rows, zip the data elements together with
-    # the column headers.
-    for row in theData:
-        json_data.append(dict(zip(column_headers, row)))
-
-    return jsonify(json_data)
+    return 'Yasss'
