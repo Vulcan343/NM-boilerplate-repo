@@ -42,10 +42,10 @@ def post_products():
     req_data = request.get_json()
     current_app.logger.info(req_data)
 
-    prod_name = req_data["ProdName"]
-    prod_price = req_data["prodprice"]
-    prod_type = req_data["milk_typeCopy"]
-    prod_ID = req_data["ProductID3"]
+    prod_name = req_data["product_name"]
+    prod_price = req_data["price"]
+    prod_type = req_data["milk_type"]
+    prod_ID = req_data["productID"]
 
     insert_stmt = f'INSERT INTO Products (name, price, milk_type, productID) ' \
                   f'VALUES ("{prod_name}", {prod_price}, "{prod_type}", {prod_ID})'
@@ -86,6 +86,7 @@ def get_prod_info(productID):
 
     return the_response
 
+
 # update the inforomation about a specific product
 @products.route('/products/update/<productID>', methods=['PUT'])
 def update_product_info(productID):
@@ -98,7 +99,7 @@ def update_product_info(productID):
 
     prod_name = req_data['ProdName']
     prod_price = req_data['prodprice']
-    prod_type = req_data['milk_type']
+    prod_type = req_data['milk_typeCopy']
    # prod_ID = req_data['productID']
 
 
