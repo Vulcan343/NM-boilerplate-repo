@@ -166,5 +166,43 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "9c1e2396-2afa-4416-a0c2-a0fd59a54de4",
+    "colId": "3d76bb03-5204-434d-8f58-7ea862f16c72",
+    "containerId": "",
+    "name": "postProd_NoCow",
+    "url": "localhost:8001/p/postproducts/try",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2023-04-20T14:26:18.296Z",
+    "modified": "2023-04-20T14:34:30.928Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"product_name\": \"Wow No cow\",\n  \"price\": 4.67,\n  \"milk_type\": \"Oat\",\n  \"productID\": 52\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "3992514e-4a52-4a7d-8372-b22266a9bdd3",
+    "colId": "3d76bb03-5204-434d-8f58-7ea862f16c72",
+    "containerId": "",
+    "name": "postProd_Milkity",
+    "url": "localhost:8001/p/postproducts/try",
+    "method": "POST",
+    "sortNum": 40000,
+    "created": "2023-04-20T14:33:52.913Z",
+    "modified": "2023-04-20T14:33:52.913Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"product_name\": \"Milkity Milk Milk\",\n  \"price\": 3.54,\n  \"milk_type\": \"Milk\",\n  \"productID\": 67\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
