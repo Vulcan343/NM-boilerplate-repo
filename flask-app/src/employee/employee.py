@@ -120,11 +120,16 @@ def post_employee():
     db.get_db().commit()
     return "Yasssss"
 
-@employee.route('/yourefired/<empID>', methods=['DELETE'])
-def remove_employee(empID):
+@employee.route('/yourefired', methods=['DELETE'])
+def remove_employee():
 
     # get a cursor object from the database
     cursor = db.get_db().cursor()
+    current_app.logger.info('Processing form data')
+    req_data = request.get_json()
+    current_app.logger.info(req_data)
+
+    empID = req_data['employeeID']
 
     # use cursor to delete specific employee with requested ID
     query = f'DELETE FROM Employees WHERE employeeID = "{empID}"'
