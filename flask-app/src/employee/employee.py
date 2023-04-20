@@ -70,15 +70,11 @@ def get_employees_at_store_loc(storeID):
 
     # get a cursor object from the database
     cursor = db.get_db().cursor()
-<<<<<<< HEAD
 
     # use cursor to query the database for all employee information from one store
-    cursor.execute('select * from Employees where storeID = {0}'.format(storeID))
+    cursor.execute(f'select * from Employees where home_store = {storeID}')
 
     # grab the column headers from the returned data
-=======
-    cursor.execute(f'select * from Employees where home_store = {storeID}')
->>>>>>> 32e0a8b1985b3738c0d5b050c7331ca8a7e99af2
     row_headers = [x[0] for x in cursor.description]
 
     # create an empty dictionary object to use in
