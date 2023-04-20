@@ -1,1 +1,35 @@
-[]
+[
+  {
+    "_id": "700ad108-883b-4e29-977e-f62cda106991",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/p/postproducts/try",
+    "url": "localhost:8001/p/postproducts/try",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-20T14:15:16.662Z",
+    "modified": "2023-04-20T14:15:16.662Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "355cf2ad-b1bf-4f83-818b-ed5a260252a7",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/p/postproducts/try",
+    "url": "localhost:8001/p/postproducts/try",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-20T14:21:12.486Z",
+    "modified": "2023-04-20T14:22:05.873Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"product_name\": \"Milkity Milk Milk\",\n  \"price\": 3.54,\n  \"milk_type\": \"Milk\",\n  \"productID\": 59\n}",
+      "form": []
+    },
+    "tests": []
+  }
+]
