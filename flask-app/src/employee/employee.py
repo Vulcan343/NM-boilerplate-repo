@@ -120,18 +120,14 @@ def post_employee():
     db.get_db().commit()
     return "Yasssss"
 
-@employee.route('/yourefired', methods=['DELETE'])
+@employee.route('/yourefired/<empID>', methods=['DELETE'])
 def remove_employee(empID):
 
     # get a cursor object from the database
     cursor = db.get_db().cursor()
 
     # use cursor to delete specific employee with requested ID
-    query = f'''
-            DELETE *
-            FROM Employees
-            WHERE employeeID = {empID}
-        '''
+    query = f'DELETE FROM Employees WHERE employeeID = "{empID}"'
     cursor.execute(query)
     db.get_db().commit()
 
