@@ -349,17 +349,36 @@
     "_id": "1899779a-3ca5-4e7c-9aaa-e832d99ec248",
     "colId": "8d5a4500-a5f8-499d-a326-0933e9fe32af",
     "containerId": "",
-    "name": "postNewHire_Obama",
+    "name": "postNewHire_Musk",
     "url": "localhost:8001/e/employee/newhire",
     "method": "POST",
     "sortNum": 50000,
     "created": "2023-04-20T14:52:48.294Z",
-    "modified": "2023-04-20T14:57:08.393Z",
+    "modified": "2023-04-20T15:26:05.741Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"last_name\": \"Obama\",\n  \"first_name\": \"Barack\",\n  \"SSN\": \"877-24-346\",\n  \"employeeID\": 400,\n  \"hourly_wage\": 15,\n  \"home_store\": \"13-4431745\"\n}",
+      "raw": "{\n  \"last_name\": \"Musk\",\n  \"first_name\": \"Elon\",\n  \"SSN\": \"938-74-274\",\n  \"EmployeeID\": \"77-4579957\",\n  \"Hourly_Wage\": 1,\n  \"Store_Location\": \"13-4431745\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "563805e1-28dd-4773-85df-f4199a4ecc15",
+    "colId": "8d5a4500-a5f8-499d-a326-0933e9fe32af",
+    "containerId": "",
+    "name": "postNewHire_Obama",
+    "url": "localhost:8001/e/employee/newhire",
+    "method": "POST",
+    "sortNum": 60000,
+    "created": "2023-04-20T15:24:45.802Z",
+    "modified": "2023-04-20T15:24:45.802Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"last_name\": \"Obama\",\n  \"first_name\": \"Barack\",\n  \"SSN\": \"877-24-346\",\n  \"EmployeeID\": \"77-4558957\",\n  \"Hourly_Wage\": 15,\n  \"Store_Location\": \"13-4431745\"\n}",
       "form": []
     },
     "tests": []
