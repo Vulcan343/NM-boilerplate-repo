@@ -2,7 +2,7 @@ create database non_dairy_barn;
 
 
 
-grant all privileges on non_dairy_barn.* to 'webapp'@'%';
+grant all privileges on non_dairy_barn.* to 'web'@'%';
 flush privileges;
 
 use non_dairy_barn;
