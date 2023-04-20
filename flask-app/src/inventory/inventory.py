@@ -23,7 +23,7 @@ def get_inventory():
 
 
 # Get specific store location inventory information
-@inventory.route('/inventory/<storeID>', methods=['GET'])
+@inventory.route('/inventory/store/<storeID>', methods=['GET'])
 def get_store_location(storeID):
     cursor = db.get_db().cursor()
     cursor.execute('select * from Inventory where storeID = {0}'.format(storeID))
