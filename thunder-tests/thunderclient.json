@@ -382,5 +382,128 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "26551d03-567a-4d12-a75a-0fea508ad501",
+    "colId": "8d5a4500-a5f8-499d-a326-0933e9fe32af",
+    "containerId": "",
+    "name": "fireEmp_00-6271485",
+    "url": "localhost:8001/e/yourefired",
+    "method": "DELETE",
+    "sortNum": 70000,
+    "created": "2023-04-20T15:33:01.830Z",
+    "modified": "2023-04-20T15:46:41.612Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"empID_Delete\": \"00-6271485\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "8a992575-5b71-4bf7-8ff4-f5c194d18a26",
+    "colId": "46bf03e0-007b-475d-adc3-4e17479f8c05",
+    "containerId": "",
+    "name": "delCustID_52",
+    "url": "localhost:8001/c/forlegalreasons/52",
+    "method": "DELETE",
+    "sortNum": 50000,
+    "created": "2023-04-20T15:42:42.528Z",
+    "modified": "2023-04-20T15:43:20.939Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "ac115658-2f12-44e5-952b-be78502b2b64",
+    "colId": "46bf03e0-007b-475d-adc3-4e17479f8c05",
+    "containerId": "",
+    "name": "delCustID_16",
+    "url": "localhost:8001/c/forlegalreasons/16",
+    "method": "DELETE",
+    "sortNum": 60000,
+    "created": "2023-04-20T15:44:13.316Z",
+    "modified": "2023-04-20T15:44:23.818Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "a6f7361e-341d-48ef-9bcb-ec38f5c90192",
+    "colId": "8d5a4500-a5f8-499d-a326-0933e9fe32af",
+    "containerId": "",
+    "name": "fireEmp_68-2355739",
+    "url": "localhost:8001/e/yourefired",
+    "method": "DELETE",
+    "sortNum": 80000,
+    "created": "2023-04-20T15:48:41.062Z",
+    "modified": "2023-04-20T15:49:27.682Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"empID_Delete\": \"68-2355739\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "5574af56-90be-4c5f-ae0c-337685391889",
+    "colId": "3d76bb03-5204-434d-8f58-7ea862f16c72",
+    "containerId": "",
+    "name": "updateProdID_19",
+    "url": "localhost:8001/p/products/update/41",
+    "method": "PUT",
+    "sortNum": 80000,
+    "created": "2023-04-20T15:52:00.057Z",
+    "modified": "2023-04-20T15:56:27.856Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"ProdName\": \"Milky Moo's Macadamia Milk\",\n  \"prodprice\": 2.54,\n  \"milk_type\": \"Macadamia\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "f802cbf5-053e-4abf-8cdb-b33b7d26eefe",
+    "colId": "3d76bb03-5204-434d-8f58-7ea862f16c72",
+    "containerId": "",
+    "name": "updateProdID_28",
+    "url": "localhost:8001/p/products/update/28",
+    "method": "PUT",
+    "sortNum": 90000,
+    "created": "2023-04-20T15:56:36.364Z",
+    "modified": "2023-04-20T15:57:42.234Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"ProdName\": \"Privilege to Pea Milk\",\n  \"prodprice\": 2.70,\n  \"milk_type\": \"Pea\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "708dfb4f-f8f3-46da-8a24-6b012b3db4f6",
+    "colId": "8d5a4500-a5f8-499d-a326-0933e9fe32af",
+    "containerId": "",
+    "name": "postNewHire_Rem",
+    "url": "localhost:8001/e/employee/newhire",
+    "method": "POST",
+    "sortNum": 55000,
+    "created": "2023-04-20T15:59:36.381Z",
+    "modified": "2023-04-20T16:00:52.234Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"last_name\": \"Remillard\",\n  \"first_name\": \"Nick\",\n  \"SSN\": \"938-77-274\",\n  \"EmployeeID\": \"77-4571837\",\n  \"Hourly_Wage\": 100,\n  \"Store_Location\": \"26-4431745\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
