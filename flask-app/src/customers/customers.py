@@ -11,8 +11,8 @@ def get_customers():
     # get a cursor object from the database
     cursor = db.get_db().cursor()
     # use cursor to query the database for a list of products where ID = requested ID
-    cursor.execute('select customerID, last_name,\
-        first_name, email, primary_storeID from Customers')
+    cursor.execute('select customer_id, last_name,\
+        first_name, email, primary_store_id from Customers')
 
 
     # grab the column headers from the returned data
@@ -55,16 +55,12 @@ def get_customer(customerID):
     return the_response
 
 #remove a customer from the customer table
-@customers.route('/forlegalreasons', methods=['DELETE'])
+@customers.route('/forlegalreasons/<custID>', methods=['DELETE'])
 def remove_customer(custID):
     # get a cursor object from the database
     cursor = db.get_db().cursor()
 
-    query = f'''
-            DELETE *
-            FROM Customers
-            WHERE customerID = {custID}
-        '''
+    query = f'DELETE FROM Customers WHERE customer_id = {custID}'
     cursor.execute(query)
     # grab the column headers from the returned data
     column_headers = [x[0] for x in cursor.description]

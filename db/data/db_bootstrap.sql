@@ -108,6 +108,7 @@ CREATE TABLE if not exists Customers(
    city             VARCHAR(13) NOT NULL,
    state            VARCHAR(13) NOT NULL,
    zipcode          INTEGER  NOT NULL
+   ON DELETE cascade
 );
 
 -- -----------------------------------------------------------------------------------------
@@ -124,6 +125,7 @@ create table if not exists StoreLoc_Cust
         FOREIGN KEY (customerID) references Customers (customer_id),
     CONSTRAINT fk_6
         foreign key (storeID) references Store_Locations (storeID)
+        ON DELETE cascade
 );
 
 -- -----------------------------------------------------------------------------------------
@@ -140,6 +142,7 @@ create table if not exists Location_Payroll
     PRIMARY KEY (employeeID, storeID, week_start_date),
     constraint fk_7
         foreign key (employeeID) references Employees (employeeID)
+        ON DELETE cascade
 );
 
 -- -----------------------------------------------------------------------------------------
@@ -155,6 +158,7 @@ create table if not exists Emp_LocPay
         foreign key (employeeID) references Location_Payroll (employeeID),
     constraint fk_9
         foreign key (storeID) references Store_Locations (storeID)
+        ON DELETE cascade
 );
 
 -- -----------------------------------------------------------------------------------------
@@ -172,6 +176,7 @@ create table if not exists Inventory
     primary key (storeID, productID, units_in_stock, units_on_order),
     constraint fk_10
         foreign key (storeID) references Store_Locations (storeID)
+        ON DELETE cascade
 
 );
 
@@ -189,6 +194,7 @@ create table if not exists Invent_Prod
         foreign key (productID) references Products (productID),
     constraint fk_12
         foreign key (storeID) references Inventory (storeID)
+        ON DELETE cascade
 );
 
 -- -----------------------------------------------------------------------------------------
@@ -202,6 +208,7 @@ create table if not exists Ingredients
     ingredient_name VARCHAR(33) NOT NULL,
     constraint fk_13
         foreign key (productID) references Products (productID)
+        ON DELETE cascade
 );
 
 -- -----------------------------------------------------------------------------------------
@@ -221,6 +228,7 @@ create table if not exists Customer_Orders
         foreign key (customerID) references Customers (customer_id),
     constraint fk_15
         foreign key (productID) references Products (productID)
+        ON DELETE cascade
 );
 
 -- -----------------------------------------------------------------------------------------
@@ -237,6 +245,7 @@ create table if not exists Prod_Cust
         foreign key (productID) references Customer_Orders (productID),
     constraint fk_17
         foreign key (productID) references Products (productID)
+        ON DELETE cascade
 );
 
 -- -----------------------------------------------------------------------------------------
@@ -255,6 +264,7 @@ CREATE TABLE if not exists Suppliers(
    contact_f_name VARCHAR(9) NOT NULL,
    phone_num      VARCHAR(12) NOT NULL,
    email          VARCHAR(28) NOT NULL
+   ON DELETE cascade
 );
 
 -- -----------------------------------------------------------------------------------------
@@ -273,6 +283,7 @@ create table if not exists Stocking_Expenses
         foreign key (storeID) references Store_Locations (storeID),
     constraint fk_19
         foreign key (productID) references Products (productID)
+        ON DELETE cascade
 );
 
 -- -----------------------------------------------------------------------------------------
@@ -291,6 +302,7 @@ create table if not exists Supplier_Orders
     primary key (supplierID, productID),
     constraint fk_20
         foreign key (supplierID) references Suppliers (supplierID)
+        ON DELETE cascade
 );
 
 -- -----------------------------------------------------------------------------------------
@@ -307,4 +319,5 @@ create table Prod_Sup
         foreign key (productID) references Products (productID),
     constraint fk_22
         foreign key (supplierID) references Supplier_Orders (supplierID)
+        ON DELETE cascade
 );
