@@ -33,7 +33,7 @@ def get_products():
     return jsonify(json_data)
 
 
-@products.route('/postproducts', methods=['POST'])
+@products.route('/postproducts/try', methods=['POST'])
 def post_products():
     # get a cursor object from the database
     cursor = db.get_db().cursor()
@@ -42,10 +42,10 @@ def post_products():
     req_data = request.get_json()
     current_app.logger.info(req_data)
 
-    prod_name = req_data['product_name']
-    prod_price = req_data['price']
-    prod_type = req_data['milk_type']
-    prod_ID = req_data['productID']
+    prod_name = req_data["product_name"]
+    prod_price = req_data["price"]
+    prod_type = req_data["milk_type"]
+    prod_ID = req_data["productID"]
 
     insert_stmt = f'INSERT INTO Products (name, price, milk_type, productID) ' \
                   f'VALUES ("{prod_name}", {prod_price}, "{prod_type}", {prod_ID})'
