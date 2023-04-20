@@ -122,7 +122,7 @@ def get_most_pop_products():
 
 # update the inforomation about a specific product
 @products.route('/products/update/<productID>', methods=['PUT'])
-def update_product_info():
+def update_product_info(productID):
     # get a cursor object from the database
     cursor = db.get_db().cursor()
 
@@ -130,14 +130,15 @@ def update_product_info():
     req_data = request.get_json()
     current_app.logger.info(req_data)
 
-    prod_name = req_data['product_name']
-    prod_price = req_data['price']
+    prod_name = req_data['ProdName']
+    prod_price = req_data['prodprice']
     prod_type = req_data['milk_type']
-    prod_ID = req_data['productID']
+   # prod_ID = req_data['productID']
 
-    update_stmt = f'UPDATE (product_name, price, milk_type) ' \
-                  f'SET ({prod_name}, {prod_price}, {prod_type})' \
-                  f'WHERE productID = {prod_ID}'
+
+    update_stmt = f'UPDATE Products ' \
+                  f'SET name = "{prod_name}", price = {prod_price}, milk_type = "{prod_type}" ' \
+                  f'WHERE productID = {productID}'
 
     current_app.logger.info(update_stmt)
 

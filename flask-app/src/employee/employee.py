@@ -107,12 +107,12 @@ def post_employee():
     last_name = req_data['last_name']
     first_name = req_data['first_name']
     SSN = req_data['SSN']
-    employeeID = req_data['employeeID']
-    hourly_wage = req_data['hourly_wage']
-    home_store = req_data['home_store']
+    employeeID = req_data['EmployeeID']
+    hourly_wage = req_data['Hourly_Wage']
+    home_store = req_data['Store_Location']
 
     insert_stmt = f'INSERT INTO Employees (first_name, last_name, SSN, employeeID, hourly_wage, home_store) ' \
-                  f'VALUES ({first_name}, {last_name}, {SSN}, {employeeID}, {hourly_wage}, {home_store})'
+                  f'VALUES ("{first_name}", "{last_name}", {SSN}, "{employeeID}", {hourly_wage}, {home_store})'
 
     current_app.logger.info(insert_stmt)
 
@@ -133,22 +133,8 @@ def remove_employee(empID):
             WHERE employeeID = {empID}
         '''
     cursor.execute(query)
-    # grab the column headers from the returned data
-    column_headers = [x[0] for x in cursor.description]
 
-    # create an empty dictionary object to use in
-    # putting column headers together with data
-    json_data = []
-
-    # fetch all the data from the cursor
-    theData = cursor.fetchall()
-
-    # for each of the rows, zip the data elements together with
-    # the column headers.
-    for row in theData:
-        json_data.append(dict(zip(column_headers, row)))
-
-    return jsonify(json_data)
+    return 'Yassss'
 
 
 # update the inforomation about a specific employee
@@ -161,15 +147,15 @@ def update_product_info(employeeID):
     req_data = request.get_json()
     current_app.logger.info(req_data)
 
-    first_name = req_data['first_name']
-    last_name = req_data['last_name']
-    hourly_wage = req_data['hourly_wage']
-    home_store = req_data['home_store']
-    empID = req_data['employeeID']
+    first_name = req_data['first_nameCopy']
+    last_name = req_data['last_nameCopy']
+    hourly_wage = req_data['Hourly_WageCopy']
+    home_store = req_data['Store_LocationCopy']
+    empID = req_data['EmployeeIDCopy']
 
-    update_stmt = f'UPDATE (first_name, last_name, hourly_wage, home_store) ' \
-                  f'SET ({first_name}, {last_name}, {hourly_wage})' \
-                  f'WHERE employeeID = {empID}'
+    update_stmt = f'UPDATE Employees ' \
+                  f'SET first_name = "{first_name}", last_name = "{last_name}", hourly_wage = {hourly_wage}, home_store = {home_store} ' \
+                  f'WHERE employeeID = "{empID}"'
 
     current_app.logger.info(update_stmt)
 
