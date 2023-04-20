@@ -32,7 +32,7 @@ def get_customer(customerID):
     # get a cursor object from the database
     cursor = db.get_db().cursor()
 
-    cursor.execute('select * from Customers where customerID = {0}'.format(customerID))
+    cursor.execute('select * from Customers where customer_id = {0}'.format(customerID))
 
     row_headers = [x[0] for x in cursor.description]
     json_data = []
