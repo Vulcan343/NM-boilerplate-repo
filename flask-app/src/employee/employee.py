@@ -25,7 +25,7 @@ def get_employees():
 @employee.route('/employee/<employeeID>', methods=['GET'])
 def get_employee(employeeID):
     cursor = db.get_db().cursor()
-    cursor.execute('select * from Employees where employeeID = {0}'.format(employeeID))
+    cursor.execute(f'select * from Employees where employeeID = {employeeID}')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -40,7 +40,7 @@ def get_employee(employeeID):
 @employee.route('/employee/<storeID>', methods=['GET'])
 def get_employees_at_store_loc(storeID):
     cursor = db.get_db().cursor()
-    cursor.execute('select * from Employees where storeID = {0}'.format(storeID))
+    cursor.execute(f'select * from Employees where storeID = {storeID}')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()

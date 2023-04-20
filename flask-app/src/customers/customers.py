@@ -12,8 +12,8 @@ def get_customers():
     cursor = db.get_db().cursor()
 
     # use cursor to query the database for a list of products where ID = resuqested ID
-    cursor.execute('select customerID, last_name,\
-        first_name, email, primary_storeID from Customers')
+    cursor.execute('select customer_id, last_name,\
+        first_name, email, primary_store_id from Customers')
 
     row_headers = [x[0] for x in cursor.description]
     json_data = []
