@@ -6,13 +6,13 @@ from src import db
 products = Blueprint('products', __name__)
 
 # Get all the products from the database
-@products.route('/products', methods=['POST'])
+@products.route('/products', methods=['GET'])
 def get_products():
     # get a cursor object from the database
     cursor = db.get_db().cursor()
 
     # use cursor to query the database for a list of products
-    cursor.execute('SELECT name, price, milk_type, product_id FROM products')
+    cursor.execute('SELECT product_name, price, milk_type, product_id FROM products')
 
     # grab the column headers from the returned data
     column_headers = [x[0] for x in cursor.description]
@@ -123,7 +123,7 @@ def get_most_pop_products():
 
 # update the inforomation about a specific product
 @products.route('/products/update/<productID>', methods=['PUT'])
-def update_product_info(productID):
+def update_product_info():
     # get a cursor object from the database
     cursor = db.get_db().cursor()
 

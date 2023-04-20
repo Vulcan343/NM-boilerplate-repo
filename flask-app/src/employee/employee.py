@@ -8,13 +8,28 @@ employee = Blueprint('employee', __name__)
 # route to get the entire group of employees within in the company
 @employee.route('/employee', methods=['GET'])
 def get_employees():
+
+    # get a cursor object from the database
     cursor = db.get_db().cursor()
+
+    # use cursor to query the database for list of all employees
     cursor.execute('select * from Employees')
+
+    # grab the column headers from the returned data
     row_headers = [x[0] for x in cursor.description]
+
+    # create an empty dictionary object to use in
+    # putting column headers together with data
     json_data = []
+
+    # fetch all the data from the cursor
     theData = cursor.fetchall()
+
+    # for each of the rows, zip the data elements together with
+    # the column headers.
     for row in theData:
         json_data.append(dict(zip(row_headers, row)))
+
     the_response = make_response(jsonify(json_data))
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
@@ -24,13 +39,30 @@ def get_employees():
 # Get specific employee information
 @employee.route('/employee/<employeeID>', methods=['GET'])
 def get_employee(employeeID):
+
+    # get a cursor object from the database
     cursor = db.get_db().cursor()
-    cursor.execute('select * from Employees where employeeID = {0}'.format(employeeID))
+
+    # use cursor to query the database for all information about one employee
+    cursor.execute('select * '
+                   'from Employees '
+                   'where employeeID = {0}'.format(employeeID))
+
+    # grab the column headers from the returned data
     row_headers = [x[0] for x in cursor.description]
+
+    # create an empty dictionary object to use in
+    # putting column headers together with data
     json_data = []
+
+    # fetch all the data from the cursor
     theData = cursor.fetchall()
+
+    # for each of the rows, zip the data elements together with
+    # the column headers.
     for row in theData:
         json_data.append(dict(zip(row_headers, row)))
+
     the_response = make_response(jsonify(json_data))
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
@@ -39,13 +71,28 @@ def get_employee(employeeID):
 # Get all employees who work at specific locations 
 @employee.route('/employee/<storeID>', methods=['GET'])
 def get_employees_at_store_loc(storeID):
+
+    # get a cursor object from the database
     cursor = db.get_db().cursor()
+
+    # use cursor to query the database for all employee information from one store
     cursor.execute('select * from Employees where storeID = {0}'.format(storeID))
+
+    # grab the column headers from the returned data
     row_headers = [x[0] for x in cursor.description]
+
+    # create an empty dictionary object to use in
+    # putting column headers together with data
     json_data = []
+
+    # fetch all the data from the cursor
     theData = cursor.fetchall()
+
+    # for each of the rows, zip the data elements together with
+    # the column headers.
     for row in theData:
         json_data.append(dict(zip(row_headers, row)))
+
     the_response = make_response(jsonify(json_data))
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
@@ -79,7 +126,11 @@ def post_employee():
 
 @employee.route('/yourefired', methods=['DELETE'])
 def remove_employee(empID):
+
+    # get a cursor object from the database
     cursor = db.get_db().cursor()
+
+    # use cursor to delete specific employee with requested ID
     query = f'''
             DELETE *
             FROM Employees
