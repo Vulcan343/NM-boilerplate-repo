@@ -12,6 +12,7 @@ def get_products():
     cursor = db.get_db().cursor()
 
     # use cursor to query the database for a list of products
+
     cursor.execute('SELECT name, price, milk_type, productID FROM Products')
 
     # grab the column headers from the returned data
@@ -121,7 +122,7 @@ def get_most_pop_products():
 
 # update the inforomation about a specific product
 @products.route('/products/update/<productID>', methods=['PUT'])
-def update_product_info(productID):
+def update_product_info():
     # get a cursor object from the database
     cursor = db.get_db().cursor()
 
